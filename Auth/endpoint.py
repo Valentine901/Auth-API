@@ -25,23 +25,7 @@ def register(data: CreateUser, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
 
-    return new_user 
-
-
-# @router.post("/", response_model=TokenResponse)
-# def login(data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-
-#     user = db.query(User).filter(User.username == data.username).first()
-#     if not user:
-#         raise HTTPException(status_code=401, detail="Unauthorized User")
-    
-#     verified_password = verify_password(data.password, user.password)
-#     if not verified_password:
-#         raise HTTPException(status_code=401, detail="Unauthorized User")
-#     access_token = create_access_token({"sub": str(user.id)})
-
-#     return {"access_token":access_token, "token_type":"bearer"}
-    
+    return new_user
 
 
 @router.post("/", response_model=TokenResponse)
